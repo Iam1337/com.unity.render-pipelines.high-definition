@@ -179,6 +179,9 @@ namespace UnityEditor.Rendering.HighDefinition
             }
             else if (e.type == EventType.MouseDrag && e.button == 0 && GUIUtility.hotControl == id)
             {
+                if (m_CursorPos == Vector2.zero)
+                    m_CursorPos = new Vector2(thumbPos.x + radius, thumbPos.y + radius);
+
                 e.Use();
                 GUI.changed = true;
                 m_CursorPos += e.delta * 0.2f; // Sensitivity
